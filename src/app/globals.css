@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme inline {
+  --mobile-nav-offset: 4.75rem;
+  --color-navy: #0a2540;
+  --color-navy-light: #0f3460;
+  --color-navy-dark: #061829;
+  --color-teal: #00bfa5;
+  --color-teal-light: #33ccba;
+  --color-teal-dark: #009688;
+  --color-earth: #8b5a2b;
+  --color-earth-light: #a6723f;
+  --color-earth-dark: #6b4423;
+  --color-gray-soft: #f0f2f6;
+  --color-gray-muted: #52607a;
+  --color-gray-body: #334155;
+  --color-cream: #faf8f5;
+  --font-sans: var(--font-inter);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-navy antialiased;
+    text-size-adjust: 100%;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-4 py-16 sm:px-6 sm:py-24 md:py-28 lg:px-8 lg:py-32;
+  }
+
+  .page-bottom-space {
+    @apply pb-28 max-md:pb-32 md:pb-28;
+  }
+
+  .container-wide {
+    @apply mx-auto max-w-7xl;
+  }
+
+  .glass-nav {
+    @apply bg-navy/95 shadow-lg backdrop-blur-md;
+  }
+
+  .bg-hero-gradient {
+    background: linear-gradient(
+      135deg,
+      rgba(10, 37, 64, 0.92) 0%,
+      rgba(10, 37, 64, 0.86) 50%,
+      rgba(6, 24, 41, 0.84) 100%
+    );
+  }
+
+  .bg-section-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 37, 64, 0.92),
+      rgba(10, 37, 64, 0.86)
+    );
+  }
+
+  .bg-content-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 37, 64, 0.72),
+      rgba(10, 37, 64, 0.62)
+    );
+  }
+
+  .content-card {
+    @apply rounded-2xl border border-slate-300 bg-cream p-6 shadow-lg shadow-navy/12 md:p-8 lg:p-10;
+  }
+
+  .content-card-white {
+    @apply rounded-2xl border border-slate-300 bg-white p-6 shadow-lg shadow-navy/12 md:p-8 lg:p-10;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.65s ease-out both;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.45s ease-out 0.6s both;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  html[data-mobile-menu="open"] .floating-booking-cta {
+    display: none;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-up,
+  .animate-fade-in {
+    animation: none;
+  }
+}
