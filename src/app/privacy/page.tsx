@@ -3,9 +3,9 @@ import PageHero from "@/components/ui/PageHero";
 import { siteConfig, siteImages } from "@/lib/content";
 
 export const metadata = pageMetadata({
-  title: "Privacy Policy",
+  title: "Privacy Policy | MRCS Oklahoma & Texas",
   description:
-    "Privacy policy for Maafa Recovery Counseling Services, PLLC. Oklahoma and Texas licensed professional counseling practice.",
+    "Privacy policy for Maafa Recovery Counseling Services, PLLC — a licensed professional counseling practice serving Stratford, Ada, OK and telehealth clients in Oklahoma & Texas.",
 });
 
 export default function PrivacyPage() {

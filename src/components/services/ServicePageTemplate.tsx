@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import Button from "@/components/ui/Button";
 import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { pageMetadata } from "@/lib/seo";
 import type { Service } from "@/lib/content";
 import { siteConfig } from "@/lib/content";
 
@@ -9,12 +9,12 @@ type ServicePageTemplateProps = {
   service: Service;
 };
 
-export function generateServiceMetadata(service: Service): Metadata {
-  return {
-    title: service.title,
-    description: `${service.description} Serving Oklahoma and Texas — in-person and telehealth.`,
+export function generateServiceMetadata(service: Service) {
+  return pageMetadata({
+    title: `${service.title} | Ada OK & Texas`,
+    description: `${service.description} Licensed LPC in Stratford & Ada, OK — telehealth available across Oklahoma & Texas. Book your appointment today.`,
     keywords: service.keywords,
-  };
+  });
 }
 
 export default function ServicePageTemplate({ service }: ServicePageTemplateProps) {

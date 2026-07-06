@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useRef, useEffect, type FormEvent } from "react";
 import { CheckCircle2, Loader2, Send, Shield } from "lucide-react";
 import { appointmentServices, siteConfig } from "@/lib/content";
 
@@ -14,11 +14,21 @@ export default function AppointmentRequestForm() {
     "idle" | "loading" | "success" | "error"
   >("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [mailtoFallback, setMailtoFallback] = useState<string | null>(null);
+  const successRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (status === "success" && successRef.current) {
+      successRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+      successRef.current.focus({ preventScroll: true });
+    }
+  }, [status]);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
     setErrorMessage("");
+    setMailtoFallback(null);
 
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -43,15 +53,16 @@ export default function AppointmentRequestForm() {
 
       if (!res.ok) {
         if (data.mailto) {
-          window.location.href = data.mailto;
+          setMailtoFallback(data.mailto);
           setStatus("success");
+          form.reset();
           return;
         }
         throw new Error(data.error ?? "Unable to send request.");
       }
 
       if (data.fallback === "mailto" && data.mailto) {
-        window.location.href = data.mailto;
+        setMailtoFallback(data.mailto);
       }
 
       setStatus("success");
@@ -69,32 +80,62 @@ export default function AppointmentRequestForm() {
   if (status === "success") {
     return (
       <div
+        ref={successRef}
         id="appointment-form"
-        className="scroll-mt-36 max-md:scroll-mt-32 md:scroll-mt-28"
+        tabIndex={-1}
+        className="scroll-mt-36 max-md:scroll-mt-32 md:scroll-mt-28 outline-none"
+        aria-live="polite"
+        role="status"
       >
-        <div className="overflow-hidden rounded-2xl border border-gray-300 bg-white shadow-xl shadow-navy/10">
-          <div className="bg-navy px-6 py-5 md:px-8">
-            <h2 className="text-xl font-bold text-white">Request Received</h2>
+        <div className="overflow-hidden rounded-2xl border-2 border-teal/40 bg-white shadow-2xl shadow-teal/10">
+          <div className="bg-gradient-to-r from-teal to-teal-light px-6 py-6 md:px-8">
+            <h2 className="text-2xl font-bold text-navy md:text-3xl">
+              Request Received!
+            </h2>
+            <p className="mt-1 text-sm font-medium text-navy/80">
+              You&apos;re one step closer to getting the support you need.
+            </p>
           </div>
-          <div className="px-6 py-10 text-center md:px-8">
+          <div className="px-6 py-10 text-center md:px-8 md:py-12">
             <CheckCircle2
-              className="mx-auto h-14 w-14 text-teal"
+              className="mx-auto h-16 w-16 text-teal"
               aria-hidden
             />
-            <p className="mt-4 text-lg text-gray-body">
-              Thank you! We&apos;ll respond promptly. You can also reach us at{" "}
-              <a
-                href={`mailto:${siteConfig.bookingEmail}`}
-                className="font-semibold text-teal hover:underline"
-              >
-                {siteConfig.bookingEmail}
-              </a>
-              .
+            <p className="mt-5 text-lg leading-relaxed text-gray-body">
+              Thank you for reaching out. Christopher will respond within{" "}
+              <strong className="text-navy">one business day</strong> to confirm
+              your appointment.
             </p>
+            {mailtoFallback ? (
+              <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+                Your browser couldn&apos;t send email automatically.{" "}
+                <a
+                  href={mailtoFallback}
+                  className="font-semibold text-teal underline hover:no-underline"
+                >
+                  Tap here to send your request via email
+                </a>
+                .
+              </p>
+            ) : (
+              <p className="mt-4 text-sm text-gray-body">
+                A confirmation has been sent to our team. Questions? Call{" "}
+                <a
+                  href={siteConfig.phoneHref}
+                  className="font-semibold text-teal hover:underline"
+                >
+                  {siteConfig.phone}
+                </a>
+                .
+              </p>
+            )}
             <button
               type="button"
-              onClick={() => setStatus("idle")}
-              className="mt-8 rounded-full bg-teal px-6 py-3 text-sm font-semibold text-navy transition hover:bg-teal-light"
+              onClick={() => {
+                setStatus("idle");
+                setMailtoFallback(null);
+              }}
+              className="mt-8 rounded-full bg-navy px-6 py-3 text-sm font-semibold text-white transition hover:bg-navy-light"
             >
               Submit another request
             </button>
@@ -109,19 +150,20 @@ export default function AppointmentRequestForm() {
       id="appointment-form"
       className="scroll-mt-36 max-md:scroll-mt-32 md:scroll-mt-28"
     >
-      <div className="overflow-hidden rounded-2xl border border-gray-300 bg-white shadow-xl shadow-navy/10">
-        <div className="border-b border-white/10 bg-gradient-to-r from-navy to-navy-light px-4 py-5 sm:px-6 md:px-8 md:py-6">
+      <div className="overflow-hidden rounded-2xl border border-gray-300 bg-white shadow-2xl shadow-navy/15">
+        <div className="border-b border-white/10 bg-gradient-to-r from-navy to-navy-light px-4 py-5 sm:px-6 md:px-8 md:py-7">
           <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-start md:justify-between md:gap-4">
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest text-teal">
-                Appointment Request
+                Free Consultation Request
               </p>
               <h2 className="mt-1 text-xl font-bold text-white sm:text-2xl md:text-3xl">
                 Request an Appointment
               </h2>
               <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/80">
                 Complete the form below and Christopher will follow up within
-                one business day. All information is kept confidential.
+                one business day. Serving Oklahoma &amp; Texas — in-person and
+                telehealth.
               </p>
             </div>
             <div className="flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium text-white/90 md:px-4 md:py-2">
@@ -235,7 +277,10 @@ export default function AppointmentRequestForm() {
           />
 
           {status === "error" && (
-            <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+            <p
+              className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
+              role="alert"
+            >
               {errorMessage}{" "}
               <a
                 href={`mailto:${siteConfig.bookingEmail}`}

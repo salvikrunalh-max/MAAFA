@@ -6,9 +6,16 @@ import Button from "@/components/ui/Button";
 import { forProfessionals, siteImages } from "@/lib/content";
 
 export const metadata = pageMetadata({
-  title: "For Professionals — LPC Supervision & CEUs",
+  title: "LPC Supervision & CEUs | Oklahoma & Texas",
   description:
-    "LPC supervision, continuing education, and contractor opportunities with Maafa Recovery Counseling Services in Oklahoma and Texas.",
+    "LPC clinical supervision, continuing education (CEUs), and 1099 contractor opportunities with Maafa Recovery Counseling in Oklahoma & Texas. Trauma-responsive, culturally attuned training.",
+  keywords: [
+    "LPC supervision Oklahoma",
+    "clinical supervision Texas",
+    "CEU workshops Oklahoma",
+    "counselor contractor Texas",
+    "LPC candidate supervision Ada OK",
+  ],
 });
 
 export default function ForProfessionalsPage() {

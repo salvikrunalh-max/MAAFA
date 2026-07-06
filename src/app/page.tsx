@@ -12,9 +12,16 @@ const TestimonialsCarousel = dynamic(
 const CTABanner = dynamic(() => import("@/components/home/CTABanner"));
 
 export const metadata = pageMetadata({
-  title: "Trauma Therapy & Counseling",
+  title: "Trauma Therapist Stratford OK & Texas Telehealth",
   description:
-    "Maafa Recovery Counseling Services — identity-conscious, trauma-responsive psychotherapy. EMDR, IFS, couples & family therapy. In-person Stratford/Ada + telehealth across Oklahoma and Texas.",
+    "Find a licensed trauma therapist in Stratford, Ada, OK or via telehealth across Oklahoma & Texas. EMDR, IFS, couples & family counseling with Christopher W. Nash Jr., M.A., LPC. Book today.",
+  keywords: [
+    "trauma therapist Oklahoma",
+    "counselor Stratford OK",
+    "EMDR therapy Ada OK",
+    "telehealth counseling Texas",
+    "LPC near me Oklahoma",
+  ],
 });
 
 export default function HomePage() {

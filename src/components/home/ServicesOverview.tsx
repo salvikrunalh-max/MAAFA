@@ -25,7 +25,7 @@ export default function ServicesOverview() {
         ))}
       </div>
 
-      <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+      <div className="mt-12 flex flex-wrap items-center justify-center gap-4 overlay-text">
         <Button href={siteConfig.bookingUrl}>Book Appointment</Button>
         <Link
           href="/services"

@@ -8,9 +8,16 @@ import { services, siteConfig, siteImages } from "@/lib/content";
 import { IMAGE_QUALITY, IMAGE_SIZES } from "@/lib/images";
 
 export const metadata = pageMetadata({
-  title: "Counseling Services",
+  title: "EMDR, IFS & Trauma Counseling | Ada OK & Texas",
   description:
-    "Trauma therapy, EMDR, IFS, couples & family counseling, and group therapy in Oklahoma and Texas. Maafa Recovery Counseling Services.",
+    "Counseling services in Oklahoma & Texas — EMDR trauma therapy, IFS, couples & family therapy, individual counseling, and group skills. In-person Stratford/Ada + telehealth. Book now.",
+  keywords: [
+    "EMDR therapy Oklahoma",
+    "IFS counseling Texas",
+    "couples therapy Ada OK",
+    "family counselor Stratford OK",
+    "group therapy Oklahoma Texas",
+  ],
 });
 
 export default function ServicesPage() {
@@ -49,7 +56,7 @@ export default function ServicesPage() {
           sizes={IMAGE_SIZES.section}
         />
         <div className="absolute inset-0 bg-section-overlay" aria-hidden />
-        <div className="container-wide relative px-5 text-center sm:px-6 lg:px-8">
+        <div className="overlay-text container-wide relative px-5 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
             Not Sure Where to Start?
           </h2>

@@ -6,9 +6,16 @@ import { clinician, siteConfig, siteImages } from "@/lib/content";
 import { IMAGE_QUALITY, IMAGE_SIZES } from "@/lib/images";
 
 export const metadata = pageMetadata({
-  title: "About Christopher W. Nash Jr., M.A., LPC",
+  title: "LPC Therapist Ada OK & Texas | Christopher W. Nash Jr.",
   description:
-    "Licensed professional counselor in Oklahoma and Texas. Chickasaw Nation experience, EMDR, IFS, ABFT-II, ACT, DBT. Trauma-responsive, culturally attuned care.",
+    "Meet Christopher W. Nash Jr., M.A., LPC — licensed trauma therapist serving Stratford, Ada, OK and telehealth clients across Oklahoma & Texas. EMDR, IFS, ABFT-II, ACT, DBT.",
+  keywords: [
+    "LPC Ada Oklahoma",
+    "therapist Stratford OK",
+    "Christopher Nash counselor",
+    "trauma therapist Texas LPC",
+    "Chickasaw Nation therapist",
+  ],
 });
 
 export default function AboutPage() {

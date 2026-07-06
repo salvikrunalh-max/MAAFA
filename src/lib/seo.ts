@@ -9,8 +9,13 @@ export const defaultKeywords = [
   "EMDR Ada OK",
   "LPC Stratford OK",
   "Maafa Recovery Counseling",
-  "IFS therapy",
-  "couples counseling Oklahoma Texas",
+  "IFS therapy Oklahoma Texas",
+  "couples counseling Ada OK",
+  "telehealth therapist Texas",
+  "book therapist Oklahoma",
+  "counselor near Stratford OK",
+  "PTSD therapy Oklahoma Texas",
+  "family therapy Ada Oklahoma",
 ] as const;
 
 export function pageMetadata({
@@ -22,10 +27,14 @@ export function pageMetadata({
   description: string;
   keywords?: string[];
 }): Metadata {
+  const mergedKeywords = keywords
+    ? [...new Set([...keywords, ...defaultKeywords])]
+    : [...defaultKeywords];
+
   return {
     title,
     description,
-    keywords: keywords ?? [...defaultKeywords],
+    keywords: mergedKeywords,
     openGraph: {
       title: `${title} | ${SEO_REGION}`,
       description,
@@ -37,15 +46,16 @@ export function pageMetadata({
 
 export const siteMetadata: Metadata = {
   title: {
-    default: `${siteConfig.name} | Trauma Therapy | ${SEO_REGION}`,
+    default: `Trauma Therapist Stratford OK & Texas | ${siteConfig.shortName}`,
     template: `%s | ${SEO_REGION} | MRCS`,
   },
   description:
-    "Identity-conscious, trauma-responsive psychotherapy in Oklahoma & Texas. EMDR, IFS, couples & family therapy. In-person Stratford/Ada + telehealth. Christopher W. Nash Jr., M.A., LPC.",
+    "Licensed trauma therapist in Stratford & Ada, OK — telehealth across Oklahoma & Texas. EMDR, IFS, couples & family counseling. Book with Christopher W. Nash Jr., M.A., LPC.",
   keywords: [...defaultKeywords],
   openGraph: {
-    title: siteConfig.name,
-    description: siteConfig.tagline,
+    title: `${siteConfig.shortName} | Trauma Therapy | ${SEO_REGION}`,
+    description:
+      "Identity-conscious, trauma-responsive psychotherapy in Oklahoma & Texas. EMDR, IFS, couples & family therapy. In-person Stratford/Ada + telehealth.",
     type: "website",
     locale: "en_US",
   },

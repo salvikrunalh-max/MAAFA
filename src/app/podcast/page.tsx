@@ -6,9 +6,15 @@ import Button from "@/components/ui/Button";
 import { siteImages } from "@/lib/content";
 
 export const metadata = pageMetadata({
-  title: "The Front Porch Podcast",
+  title: "The Front Porch Podcast | Oklahoma & Texas Mental Health",
   description:
-    "The Front Porch Podcast — conversations on mental health, healing, culture, and community with Christopher W. Nash Jr. Based in Oklahoma and Texas.",
+    "The Front Porch Podcast — mental health conversations on healing, culture, and community from Christopher W. Nash Jr., LPC. Based in Stratford, Ada, OK serving Oklahoma & Texas.",
+  keywords: [
+    "mental health podcast Oklahoma",
+    "therapy podcast Texas",
+    "Front Porch Podcast MRCS",
+    "counseling conversations Ada OK",
+  ],
 });
 
 export default function PodcastPage() {

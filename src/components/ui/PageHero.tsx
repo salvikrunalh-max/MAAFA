@@ -42,7 +42,7 @@ export default function PageHero({
         <div className="absolute inset-0 bg-hero-gradient" />
       </div>
 
-      <div className="container-wide px-5 sm:px-6 lg:px-8">
+      <div className="overlay-text container-wide px-5 sm:px-6 lg:px-8">
         <div className="animate-fade-up max-w-3xl">
           <h1 className="text-[2rem] font-extrabold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
             {title}

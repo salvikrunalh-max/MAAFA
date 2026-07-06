@@ -18,7 +18,7 @@ export default function CTABanner() {
       />
       <div className="absolute inset-0 bg-section-overlay" aria-hidden />
 
-      <div className="container-wide relative px-5 sm:px-6 lg:px-8">
+      <div className="overlay-text container-wide relative px-5 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
             Ready to Begin Your Healing Journey?

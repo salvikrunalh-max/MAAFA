@@ -21,7 +21,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-hero-gradient" />
       </div>
 
-      <div className="container-wide flex min-h-[88vh] flex-col justify-center px-5 pb-24 pt-36 sm:min-h-[92vh] sm:px-6 sm:pb-20 sm:pt-32 lg:px-8">
+      <div className="overlay-text container-wide flex min-h-[88vh] flex-col justify-center px-5 pb-24 pt-36 sm:min-h-[92vh] sm:px-6 sm:pb-20 sm:pt-32 lg:px-8">
         <div className="animate-fade-up max-w-3xl">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-teal sm:text-sm">
             {siteConfig.shortName} · Licensed LPC

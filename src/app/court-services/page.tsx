@@ -5,10 +5,15 @@ import Button from "@/components/ui/Button";
 import { courtServices, siteConfig, siteImages } from "@/lib/content";
 
 export const metadata = pageMetadata({
-  title: "Court Services & ADSAC/DUI Assessments",
+  title: "ADSAC & DUI Assessment | Ada & Stratford OK",
   description:
-    "ADSAC assessments and DUI evaluations in Ada and Stratford, OK. Court-ordered counseling referrals. Serving Oklahoma and Texas.",
-  keywords: courtServices.keywords,
+    "Court-ordered ADSAC assessments, DUI evaluations, and counseling referrals in Ada & Stratford, Oklahoma. Professional evaluations serving OK communities and Texas telehealth clients.",
+  keywords: [
+    ...courtServices.keywords,
+    "court ordered counseling Oklahoma",
+    "DUI assessment Texas",
+    "ADSAC near Ada OK",
+  ],
 });
 
 export default function CourtServicesPage() {
