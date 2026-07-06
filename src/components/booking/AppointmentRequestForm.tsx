@@ -14,7 +14,6 @@ export default function AppointmentRequestForm() {
     "idle" | "loading" | "success" | "error"
   >("idle");
   const [errorMessage, setErrorMessage] = useState("");
-  const [mailtoFallback, setMailtoFallback] = useState<string | null>(null);
   const successRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -28,7 +27,6 @@ export default function AppointmentRequestForm() {
     e.preventDefault();
     setStatus("loading");
     setErrorMessage("");
-    setMailtoFallback(null);
 
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -49,20 +47,15 @@ export default function AppointmentRequestForm() {
         body: JSON.stringify(payload),
       });
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        if (data.mailto) {
-          setMailtoFallback(data.mailto);
-          setStatus("success");
-          form.reset();
-          return;
-        }
-        throw new Error(data.error ?? "Unable to send request.");
+      let data: { success?: boolean; error?: string; emailSent?: boolean } = {};
+      try {
+        data = await res.json();
+      } catch {
+        throw new Error("Unable to reach the server. Please try again.");
       }
 
-      if (data.fallback === "mailto" && data.mailto) {
-        setMailtoFallback(data.mailto);
+      if (!res.ok || !data.success) {
+        throw new Error(data.error ?? "Unable to send request.");
       }
 
       setStatus("success");
@@ -106,35 +99,26 @@ export default function AppointmentRequestForm() {
               <strong className="text-navy">one business day</strong> to confirm
               your appointment.
             </p>
-            {mailtoFallback ? (
-              <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-                Your browser couldn&apos;t send email automatically.{" "}
-                <a
-                  href={mailtoFallback}
-                  className="font-semibold text-teal underline hover:no-underline"
-                >
-                  Tap here to send your request via email
-                </a>
-                .
-              </p>
-            ) : (
-              <p className="mt-4 text-sm text-gray-body">
-                A confirmation has been sent to our team. Questions? Call{" "}
-                <a
-                  href={siteConfig.phoneHref}
-                  className="font-semibold text-teal hover:underline"
-                >
-                  {siteConfig.phone}
-                </a>
-                .
-              </p>
-            )}
+            <p className="mt-4 text-sm text-gray-body">
+              Your request was sent to our team at{" "}
+              <a
+                href={`mailto:${siteConfig.bookingEmail}`}
+                className="font-semibold text-teal hover:underline"
+              >
+                {siteConfig.bookingEmail}
+              </a>
+              . Questions? Call{" "}
+              <a
+                href={siteConfig.phoneHref}
+                className="font-semibold text-teal hover:underline"
+              >
+                {siteConfig.phone}
+              </a>
+              .
+            </p>
             <button
               type="button"
-              onClick={() => {
-                setStatus("idle");
-                setMailtoFallback(null);
-              }}
+              onClick={() => setStatus("idle")}
               className="mt-8 rounded-full bg-navy px-6 py-3 text-sm font-semibold text-white transition hover:bg-navy-light"
             >
               Submit another request
