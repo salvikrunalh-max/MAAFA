@@ -17,7 +17,7 @@ export const siteConfig = {
   email: "cnash50@gmail.com",
   phone: "405-456-9796",
   phoneHref: "tel:+14054569796",
-  address: "12736 County Road 3450, Stratford, OK 74872",
+  address: "1011 Colony Drive, Ada, OK 74820",
   bookingUrl: "/contact#appointment-form",
   simplePracticeUrl: "https://christopher-nash-jr.clientsecure.me",
   simplePracticeSignInUrl: "https://christopher-nash-jr.clientsecure.me/sign-in",
@@ -44,8 +44,8 @@ export const clinician = {
     "Texas Licensed Professional Counselor (since January 22, 2024)",
   ],
   summary:
-    "Clinical Mental Health Counselor with experience working with children, adolescents, and adults using a variety of theoretical perspectives in individual, family, and group therapy sessions.",
-  bio: `Christopher W. Nash Jr. is a licensed professional counselor serving Oklahoma and Texas with over a decade of clinical experience across children, adolescents, and adults. As Program Therapist with the Chickasaw Nation Strong Foundation in Ada, OK, he provides individual, couples, family, and group therapy to a diverse employee population of 17,000+ — integrating evidence-based modalities with culturally attuned, identity-conscious care.`,
+    "Christopher \"Chris\" W. Nash Jr., M.A., LPC, is a licensed professional counselor serving clients across Oklahoma and Texas with more than a decade of clinical experience supporting children, adolescents, and adults. As founder and lead psychotherapist of Maafa Recovery Counseling Services, Chris offers specialized individual, couples, family, and group therapy grounded in deep, systemic healing. He integrates advanced evidence-based approaches—particularly Internal Family Systems (IFS) and EMDR—with culturally attuned, identity-conscious care to help clients safely process complex trauma, restore relational safety, and reclaim wholeness within their own cultural and community contexts.",
+  bio: `Christopher "Chris" W. Nash Jr., M.A., LPC, is a licensed professional counselor serving clients across Oklahoma and Texas with more than a decade of clinical experience supporting children, adolescents, and adults. As founder and lead psychotherapist of Maafa Recovery Counseling Services, Chris offers specialized individual, couples, family, and group therapy grounded in deep, systemic healing. He integrates advanced evidence-based approaches—particularly Internal Family Systems (IFS) and EMDR—with culturally attuned, identity-conscious care to help clients safely process complex trauma, restore relational safety, and reclaim wholeness within their own cultural and community contexts.`,
   education: [
     {
       degree: "Master of Arts in Clinical Mental Health Counseling",

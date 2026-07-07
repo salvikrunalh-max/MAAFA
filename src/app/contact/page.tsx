@@ -216,7 +216,7 @@ export default function ContactPage() {
               <div className="content-card-white mt-6 overflow-hidden p-0">
                 <iframe
                   title="Maafa Recovery Counseling Services location map"
-                  src="https://maps.google.com/maps?q=12736+County+Road+3450+Stratford+OK+74872&output=embed"
+                  src="https://maps.google.com/maps?q=1011+Colony+Drive+Ada+OK+74820&output=embed"
                   className="h-80 w-full md:h-96"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
