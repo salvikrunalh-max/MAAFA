@@ -122,9 +122,9 @@ export default function Footer() {
             </p>
           </div>
           <p className="mt-4 text-center text-[11px] text-white/35">
-            Website built by{" "}
+            Built by{" "}
             <a
-              href="https://v0-novapulse-ai-landing-page.vercel.app/"
+              href="https://www.krakenixai.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/45 underline-offset-2 transition hover:text-teal/70 hover:underline"
