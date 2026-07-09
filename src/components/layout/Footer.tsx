@@ -124,12 +124,12 @@ export default function Footer() {
           <p className="mt-4 text-center text-[11px] text-white/35">
             Built by{" "}
             <a
-              href="https://www.krakenixai.com"
+              href="https://krakenixai.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/45 underline-offset-2 transition hover:text-teal/70 hover:underline"
             >
-              NovaPulse AI
+              Krakenix AI
             </a>
           </p>
         </div>
